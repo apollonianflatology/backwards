@@ -12,27 +12,30 @@ All the strategies are basically the same, but much slower than using `reverse`.
 
 ```
 Warming up --------------------------------------
-             reverse   256.828k i/100ms
-              downto    27.600k i/100ms
-    each_with_object    33.763k i/100ms
-            in_place    32.406k i/100ms
-       in_place_swap    40.066k i/100ms
-            iterator    43.798k i/100ms
+             reverse   273.806k i/100ms
+         InPlaceSwap    33.286k i/100ms
+            Iterator    42.064k i/100ms
+               Array    12.412k i/100ms
+              Downto    20.710k i/100ms
+      EachWithObject    31.488k i/100ms
+             InPlace    25.531k i/100ms
 Calculating -------------------------------------
-             reverse      7.435M (± 5.4%) i/s -     37.240M in   5.025961s
-              downto    514.695k (± 6.9%) i/s -      2.567M in   5.014585s
-    each_with_object    518.445k (± 5.4%) i/s -      2.600M in   5.030954s
-            in_place    533.130k (± 4.1%) i/s -      2.690M in   5.054095s
-       in_place_swap    528.486k (± 4.0%) i/s -      2.644M in   5.012267s
-            iterator    525.024k (± 4.2%) i/s -      2.628M in   5.014507s
+             reverse      7.213M (± 6.9%) i/s -     36.142M in   5.037753s
+         InPlaceSwap    349.915k (±10.2%) i/s -      1.731M in   5.024303s
+            Iterator    362.580k (± 5.2%) i/s -      1.809M in   5.003417s
+               Array    365.376k (± 3.9%) i/s -      1.825M in   5.002677s
+              Downto    372.207k (± 1.6%) i/s -      1.864M in   5.008950s
+      EachWithObject    369.926k (± 1.7%) i/s -      1.858M in   5.023528s
+             InPlace    372.649k (± 1.5%) i/s -      1.864M in   5.002560s
 
 Comparison:
-             reverse:  7434706.5 i/s
-            in_place:   533130.1 i/s - 13.95x  slower
-       in_place_swap:   528486.1 i/s - 14.07x  slower
-            iterator:   525023.8 i/s - 14.16x  slower
-    each_with_object:   518444.9 i/s - 14.34x  slower
-              downto:   514695.0 i/s - 14.44x  slower
+             reverse:  7212919.3 i/s
+             InPlace:   372648.8 i/s - 19.36x  slower
+              Downto:   372206.9 i/s - 19.38x  slower
+      EachWithObject:   369926.3 i/s - 19.50x  slower
+               Array:   365375.6 i/s - 19.74x  slower
+            Iterator:   362579.7 i/s - 19.89x  slower
+         InPlaceSwap:   349914.6 i/s - 20.61x  slower
 ```
 
 # Example Usage

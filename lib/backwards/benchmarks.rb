@@ -9,29 +9,11 @@ Benchmark.ips do |x|
     'abcde'.reverse
   end
 
-  x.report('downto') do
-    using Backwards::Strategy::Downto
-    'abcde'.backwards
-  end
-
-  x.report('each_with_object') do
-    using Backwards::Strategy::EachWithObject
-    'abcde'.backwards
-  end
-
-  x.report('in_place') do
-    using Backwards::Strategy::InPlace
-    'abcde'.backwards
-  end
-
-  x.report('in_place_swap') do
-    using Backwards::Strategy::InPlaceSwap
-    'abcde'.backwards
-  end
-
-  x.report('iterator') do
-    using Backwards::Strategy::Iterator
-    'abcde'.backwards
+  Backwards::Strategy.constants.each do |strategy|
+    x.report(strategy) do
+      using Backwards::Strategy.const_get(strategy)
+      'abcde'.backwards
+    end
   end
 
   x.compare!

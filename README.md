@@ -46,4 +46,6 @@ using Backwards::Strategy::InPlace
 
 # Development
 
-Add a new strategy as a String refinement, and require it in [lib/backwards.rb](lib/backwards.rb). RSpec will automatically pick it up and run the standard test suite against it. Add it to the benchmarks and regenerate the output above.
+* Add a new strategy as a String refinement, and require it in [lib/backwards.rb](lib/backwards.rb).
+* RSpec will automatically pick it up and run the standard test suite against it.
+* Run benchmarks and update this README above. 

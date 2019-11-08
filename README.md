@@ -6,9 +6,11 @@ Each strategy is a refinement you can use if for some reason you don't like usin
 
 # Benchmarks
 
-Run `ruby lib/backwards/benchmarks.rb` to run the benchmarks.
+Run `rake benchmark` to run the benchmarks.
 
 All the strategies are basically the same, but much slower than using `reverse`. 🎉
+
+## Iterations per second
 
 ```
 Warming up --------------------------------------
@@ -36,6 +38,42 @@ Comparison:
                Array:   365375.6 i/s - 19.74x  slower
             Iterator:   362579.7 i/s - 19.89x  slower
          InPlaceSwap:   349914.6 i/s - 20.61x  slower
+```
+
+## Allocations
+
+```
+Calculating -------------------------------------
+             reverse    80.000  memsize (     0.000  retained)
+                         2.000  objects (     0.000  retained)
+                         2.000  strings (     0.000  retained)
+              Downto   816.000  memsize (     0.000  retained)
+                        11.000  objects (     0.000  retained)
+                         8.000  strings (     0.000  retained)
+      EachWithObject   448.000  memsize (     0.000  retained)
+                         9.000  objects (     0.000  retained)
+                         7.000  strings (     0.000  retained)
+             InPlace   360.000  memsize (     0.000  retained)
+                         9.000  objects (     0.000  retained)
+                         6.000  strings (     0.000  retained)
+               Array     2.316k memsize (   508.000  retained)
+                        26.000  objects (     1.000  retained)
+                         8.000  strings (     0.000  retained)
+         InPlaceSwap   280.000  memsize (     0.000  retained)
+                         7.000  objects (     0.000  retained)
+                         5.000  strings (     0.000  retained)
+            Iterator   280.000  memsize (     0.000  retained)
+                         7.000  objects (     0.000  retained)
+                         7.000  strings (     0.000  retained)
+
+Comparison:
+             reverse:         80 allocated
+         InPlaceSwap:        280 allocated - 3.50x more
+            Iterator:        280 allocated - 3.50x more
+             InPlace:        360 allocated - 4.50x more
+      EachWithObject:        448 allocated - 5.60x more
+              Downto:        816 allocated - 10.20x more
+               Array:       2316 allocated - 28.95x more
 ```
 
 # Example Usage

@@ -67,6 +67,7 @@ Lint/AmbiguousBlockAssociation:
 
 Metrics/BlockLength:
   Exclude:
+    - lib/tasks/benchmark.rake
     - spec/**/*
 
 Metrics/LineLength:

@@ -1,5 +1,7 @@
 # Backwards
 
+[![Build Status](https://travis-ci.org/apollonianflatology/backwards.svg?branch=master)](https://travis-ci.org/apollonianflatology/backwards)
+
 Multiple strategies for reversing a string without using any methods named `reverse`.
 
 Each strategy is a refinement you can use if for some reason you don't like using built in string reversing methods. Each strategy is multibyte character safe (in modern Ruby at least).

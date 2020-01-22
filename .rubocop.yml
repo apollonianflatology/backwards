@@ -12,13 +12,13 @@ AllCops:
 Layout/AccessModifierIndentation:
   EnforcedStyle: indent
 
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: always_ignore
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
   IndentationWidth: 2
 
@@ -38,7 +38,7 @@ Layout/EmptyLinesAroundExceptionHandlingKeywords:
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/MultilineMethodCallBraceLayout:
@@ -71,7 +71,7 @@ Metrics/BlockLength:
     - lib/tasks/benchmark.rake
     - spec/**/*
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 150
   IgnoreCopDirectives: true
 

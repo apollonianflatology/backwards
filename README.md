@@ -18,30 +18,34 @@ All the strategies are basically the same, but much slower than using `reverse`.
 
 ```
 Warming up --------------------------------------
-             reverse   273.806k i/100ms
-         InPlaceSwap    33.286k i/100ms
-            Iterator    42.064k i/100ms
-               Array    12.412k i/100ms
-              Downto    20.710k i/100ms
-      EachWithObject    31.488k i/100ms
-             InPlace    25.531k i/100ms
+             reverse   284.671k i/100ms
+              Downto    12.604k i/100ms
+      EachWithObject    12.018k i/100ms
+             InPlace    11.900k i/100ms
+         InPlaceSwap    12.661k i/100ms
+            Iterator    12.767k i/100ms
+              SortBy    13.878k i/100ms
+               Array    12.462k i/100ms
 Calculating -------------------------------------
-             reverse      7.213M (± 6.9%) i/s -     36.142M in   5.037753s
-         InPlaceSwap    349.915k (±10.2%) i/s -      1.731M in   5.024303s
-            Iterator    362.580k (± 5.2%) i/s -      1.809M in   5.003417s
-               Array    365.376k (± 3.9%) i/s -      1.825M in   5.002677s
-              Downto    372.207k (± 1.6%) i/s -      1.864M in   5.008950s
-      EachWithObject    369.926k (± 1.7%) i/s -      1.858M in   5.023528s
-             InPlace    372.649k (± 1.5%) i/s -      1.864M in   5.002560s
+             reverse      7.400M (± 3.6%) i/s -     37.007M in   5.008176s
+              Downto    144.957k (± 7.9%) i/s -    731.032k in   5.079960s
+      EachWithObject    138.033k (± 9.0%) i/s -    685.026k in   5.007222s
+             InPlace    137.747k (± 8.4%) i/s -    690.200k in   5.048811s
+         InPlaceSwap    137.302k (± 8.1%) i/s -    683.694k in   5.013102s
+            Iterator    136.282k (± 9.0%) i/s -    676.651k in   5.010478s
+              SortBy    141.263k (± 6.4%) i/s -    707.778k in   5.031110s
+               Array    134.489k (±10.4%) i/s -    672.948k in   5.060711s
 
 Comparison:
-             reverse:  7212919.3 i/s
-             InPlace:   372648.8 i/s - 19.36x  slower
-              Downto:   372206.9 i/s - 19.38x  slower
-      EachWithObject:   369926.3 i/s - 19.50x  slower
-               Array:   365375.6 i/s - 19.74x  slower
-            Iterator:   362579.7 i/s - 19.89x  slower
-         InPlaceSwap:   349914.6 i/s - 20.61x  slower
+             reverse:  7399556.8 i/s
+              Downto:   144956.9 i/s - 51.05x  slower
+              SortBy:   141263.1 i/s - 52.38x  slower
+      EachWithObject:   138032.9 i/s - 53.61x  slower
+             InPlace:   137747.5 i/s - 53.72x  slower
+         InPlaceSwap:   137301.5 i/s - 53.89x  slower
+            Iterator:   136282.5 i/s - 54.30x  slower
+               Array:   134489.1 i/s - 55.02x  slower
+
 ```
 
 ## Allocations
@@ -51,24 +55,27 @@ Calculating -------------------------------------
              reverse    80.000  memsize (     0.000  retained)
                          2.000  objects (     0.000  retained)
                          2.000  strings (     0.000  retained)
-              Downto   816.000  memsize (     0.000  retained)
-                        11.000  objects (     0.000  retained)
-                         8.000  strings (     0.000  retained)
-      EachWithObject   448.000  memsize (     0.000  retained)
-                         9.000  objects (     0.000  retained)
-                         7.000  strings (     0.000  retained)
+              Downto   816.000  memsize (    40.000  retained)
+                        11.000  objects (     1.000  retained)
+                         8.000  strings (     1.000  retained)
+      EachWithObject   448.000  memsize (    40.000  retained)
+                         9.000  objects (     1.000  retained)
+                         7.000  strings (     1.000  retained)
              InPlace   360.000  memsize (     0.000  retained)
                          9.000  objects (     0.000  retained)
                          6.000  strings (     0.000  retained)
-               Array     2.316k memsize (   508.000  retained)
-                        26.000  objects (     1.000  retained)
-                         8.000  strings (     0.000  retained)
          InPlaceSwap   280.000  memsize (     0.000  retained)
                          7.000  objects (     0.000  retained)
                          5.000  strings (     0.000  retained)
-            Iterator   280.000  memsize (     0.000  retained)
-                         7.000  objects (     0.000  retained)
-                         7.000  strings (     0.000  retained)
+            Iterator   280.000  memsize (    80.000  retained)
+                         7.000  objects (     2.000  retained)
+                         7.000  strings (     2.000  retained)
+              SortBy     2.332k memsize (   548.000  retained)
+                        26.000  objects (     2.000  retained)
+                         8.000  strings (     1.000  retained)
+               Array     2.316k memsize (   548.000  retained)
+                        26.000  objects (     2.000  retained)
+                         8.000  strings (     1.000  retained)
 
 Comparison:
              reverse:         80 allocated
@@ -78,6 +85,8 @@ Comparison:
       EachWithObject:        448 allocated - 5.60x more
               Downto:        816 allocated - 10.20x more
                Array:       2316 allocated - 28.95x more
+              SortBy:       2332 allocated - 29.15x more
+
 ```
 
 # Example Usage
@@ -93,4 +102,4 @@ using Backwards::Strategy::InPlace
 
 * Add a new strategy as a String refinement, and require it in [lib/backwards.rb](lib/backwards.rb).
 * RSpec will automatically pick it up and run the standard test suite against it.
-* Run benchmarks and update this README above. 
+* Run benchmarks and update this README above.

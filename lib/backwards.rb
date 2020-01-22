@@ -6,6 +6,7 @@ require 'backwards/strategy/each_with_object'
 require 'backwards/strategy/in_place'
 require 'backwards/strategy/in_place_swap'
 require 'backwards/strategy/iterator'
+require 'backwards/strategy/sort_by'
 
 module Backwards
 end
